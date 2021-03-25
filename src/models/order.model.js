@@ -6,7 +6,8 @@ const orderSchema = new Schema({
     user:{type: Schema.Types.ObjectId, ref:'User'},
     products: [{
         type: Schema.Types.ObjectId, ref:'Product'
-    }]
+    }],
+    status: String
 },
     { timestamps: true }
 );

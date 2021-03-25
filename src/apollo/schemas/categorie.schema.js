@@ -10,9 +10,10 @@ module.exports = gql`
         categories:[Categorie!]!
         categorie(id:ID!): Categorie!
     }
+   
     extend type Mutation {
         createCategorie(title:String!, products:[ID]): Categorie!
-        updateCategorie(id: ID!, title: String!): Categorie
-        deleteCategorie(id: ID!): Boolean
+        updateCategorie(id: ID!, title: String!, products:[ID]): Categorie!
+        deleteCategorie(id: ID!): Boolean      
     }
 `

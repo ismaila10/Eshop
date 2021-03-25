@@ -1,5 +1,6 @@
 
 const Categorie = require('../../models/categorie.model');
+const { filter } = require('../schemas');
 
 module.exports = {
   Query: {
@@ -17,28 +18,16 @@ module.exports = {
         const newCategorie = new Categorie({
             title: title,
             products: products
-        })
-        // let checkTitle = Categorie.findOne(categor => categor.title === title)
-        // if(checkTitle == -1 ){
-        //     const newCategorie = new Categorie({
-        //         title: title,
-        //         products: products
-        // })
-        // }else {
-        //     throw new Error('Title already exist')
-        // }     
+        })   
         return newCategorie.save();
     },
     deleteCategorie: (parent, {id}) => {
         return Categorie.findByIdAndDelete(id)
     },
     updateCategorie:(parent, args) => {
-        const index = Categorie.findById(cat => cat.id === args.id)
-        if(index < -1){
-            if(args.title) index.title = args.title
-            if(args.products) index.products = args.products
-            return index
-        }
+      return Categorie.findByIdAndUpdate(args.id, 
+        {title :args.title, products: args.products}
+      );
     }
   },
 };

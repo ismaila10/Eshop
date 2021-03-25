@@ -5,6 +5,7 @@ module.exports = gql`
     id: ID!
     title: String
     price: Float!
+    status: String
     description: String
     categorie: Categorie
   }
@@ -13,8 +14,8 @@ module.exports = gql`
     product(id: ID!): Product
   }
   extend type Mutation {
-    createProduct(title: String, price: Float, description: String, categorie: ID): Product,
-    updateProduct(id:ID!,title: String, price: Float, description: String, categorie: ID): Product,
+    createProduct(title: String, price: Float, description: String, status: String, categorie: ID): Product,
+    updateProduct(id:ID!,title: String, price: Float, description: String, status: String, categorie: ID): Product,
     deleteProduct(id:ID!): Product
   }
 `;

@@ -17,6 +17,11 @@ const productSchema = new Schema({
         required: true,
         lowercase: true
     },
+    status: {
+        type: String,
+        required: true,
+        lowercase: true
+    },
     categorie:{type: Schema.Types.ObjectId, ref:'Categorie'},
     Image: String
 },

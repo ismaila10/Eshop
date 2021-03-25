@@ -10,7 +10,7 @@ exports.validate = function (data) {
         streetName: Joi.string().required(),
         city: Joi.string().required(),
         country: Joi.string().required(),
-        isAdmin: Joi.boolean().required(),
+        isAdmin: Joi.boolean(),
         age: Joi.number().required(),
         password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/)
     });
