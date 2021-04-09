@@ -65,7 +65,7 @@ exports.login = (req, res) => {
         return res.status(404).send({
           auth: false,
           token: null,
-          message: `no user finf with email ${req.body.email}`
+          message: `no user find with email ${req.body.email}`
         });
       }
       let passwordIsValid = bcrypt.compareSync(

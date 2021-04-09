@@ -11,6 +11,12 @@ module.exports = {
       console.log(args.id);
       return Product.findById(args.id)
       .populate('categorie');
+    },
+    feed: (parent, args) => {
+      console.log(args.filter);
+      const regex = new RegExp(args.filter, 'i')
+      const products = Product.find({$or: [ {title: {$regex: regex}}, {description: {$regex: regex}}]})
+      return products
     }
   },
   Mutation: {
@@ -23,9 +29,12 @@ module.exports = {
         categorie: args.categorie
       });
       const validation = productValidationSchema.validate(newProduct);
-      if (validation.error) {
-        return res.status(400).send(validation.error);
+      console.log(validation)
+      if (validation) {
+        //console.log(validation)
+        return (validation.error);
       }
+      //Categorie.findOneAndUpdate()
       return newProduct.save();
     },
     deleteProduct: (parent, {id}) => {
@@ -44,3 +53,16 @@ module.exports = {
     }
   },
 };
+
+// mutation{_
+// 	createProduct(
+//     title: "cable display", 
+//     description: "qualité USB-C",
+//     status: "disponible",
+//     price: 45,
+//     categorie: "605490854309f17adc40413e"
+//   ){
+//     id
+//     title
+//   }
+// }

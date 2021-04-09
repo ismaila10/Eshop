@@ -26,6 +26,8 @@
         "graphql": "^15.5.0",
         "graphql-tools": "^7.0.4",
         "joi": "^17.4.0",
+        "joi-objectid": "^3.0.1",
+        "joi-oid": "^1.1.2",
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.11.17"
     },
