@@ -10,7 +10,7 @@ module.exports = {
     product: (parent, args) => {
       console.log(args.id);
       return Product.findById(args.id)
-      .populate('categorie');
+        .populate('categorie');
     },
     feed: (parent, args) => {
       console.log(args.filter);

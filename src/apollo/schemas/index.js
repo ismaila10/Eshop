@@ -4,6 +4,7 @@ const productSchema = require('./product.schema.js');
 const orderSchema = require('./order.schema.js');
 const userSchema = require('./user.schema.js');
 const categorieSchema = require('./categorie.schema.js');
+const addressSchema = require('./address.schema.js');
 
 const linkSchema = gql`
     type Query {
@@ -14,5 +15,5 @@ const linkSchema = gql`
     }
 `;
 
-module.exports = [linkSchema, productSchema,orderSchema,userSchema, categorieSchema]
+module.exports = [linkSchema, productSchema,orderSchema,userSchema, categorieSchema, addressSchema]
 

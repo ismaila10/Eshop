@@ -123,3 +123,20 @@ exports.getMe = (req, res) => {
       });
     });
 };
+
+exports.getUsers = (res) => {
+  User.find()
+    .then((users) => {
+      if (!users) {
+        return res.status(404).send({
+          message: 'users not found',
+        });
+      }
+      res.send(users);
+    })
+    .catch((err) => {
+      return res.status(404).send({
+        message: err.message,
+      });
+    });
+};

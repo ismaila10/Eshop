@@ -9,5 +9,6 @@ router.post('/register',users.register);
 router.post('/login', users.login);
 router.get('/logout', users.logout);
 router.get('/user/:id', verifyToken, users.getMe);
+router.get('/users', users.getUsers);
 
 module.exports = router;

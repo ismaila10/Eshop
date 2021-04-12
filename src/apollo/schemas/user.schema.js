@@ -7,5 +7,14 @@ module.exports = gql`
     lastName: String
     email: String
     isAdmin: Boolean
+    password: String
+    phone: String
+    age: Int
+    address: Address 
+  }
+  extend type Query {
+    users: [User]
+    user(id: ID!): User
+    search(filter: String): [User]
   }
 `;
