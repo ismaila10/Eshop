@@ -28,12 +28,12 @@ module.exports = {
         status: args.status,
         categorie: args.categorie
       });
-      const validation = productValidationSchema.validate(newProduct);
+      /*const validation = productValidationSchema.validate(newProduct);
       console.log(validation)
       if (validation) {
         //console.log(validation)
         return (validation.error);
-      }
+      }*/
       //Categorie.findOneAndUpdate()
       return newProduct.save();
     },

@@ -8,7 +8,7 @@ exports.validate = function (data) {
         title: Joi.string().required(),
         price: Joi.number().required(),
         status: Joi.string().required(),
-        categorie: Joi.string().required(),
+        categorie: Joi.string(),
         description: Joi.string().required()
         
         
