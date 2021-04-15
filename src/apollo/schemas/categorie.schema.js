@@ -9,6 +9,7 @@ module.exports = gql`
     extend type Query {
         categories:[Categorie!]!
         categorie(id:ID!): Categorie!
+        feedCategories(filter: String): [Categorie]
     }
    
     extend type Mutation {

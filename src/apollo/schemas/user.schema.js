@@ -15,6 +15,6 @@ module.exports = gql`
   extend type Query {
     users: [User]
     user(id: ID!): User
-    search(filter: String): [User]
+    feedUsers(filter: String): [User]
   }
 `;

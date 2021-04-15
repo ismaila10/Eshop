@@ -12,11 +12,11 @@ module.exports = {
       return Product.findById(args.id)
         .populate('categorie');
     },
-    feed: (parent, args) => {
+    feedProducts: (parent, args) => {
       console.log(args.filter);
       const regex = new RegExp(args.filter, 'i')
       const products = Product.find({$or: [ {title: {$regex: regex}}, {description: {$regex: regex}}]})
-      return products
+      return products.populate('categorie')
     }
   },
   Mutation: {
@@ -41,13 +41,13 @@ module.exports = {
       return Product.findByIdAndDelete(id)
     },
     updateProduct:(parent, args) => {
+      console.log(args.title);
       return Product.findByIdAndUpdate(args.id, 
         {
           title :args.title, 
           price :args.price, 
           description: args.description,
           status: args.status,
-          categorie: args.categorie
         }
       );
     }

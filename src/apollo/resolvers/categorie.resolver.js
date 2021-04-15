@@ -12,6 +12,12 @@ module.exports = {
       return Categorie.findById(id)
       .populate('products');
     },
+    feedCategories: (parent, args) => {
+      console.log(args.filter);
+      const regex = new RegExp(args.filter, 'i')
+      const categories = Categorie.find({title: {$regex: regex}})
+      return categories.populate('products')
+    }
   },
   Mutation: {
     createCategorie: (parent, {title, products}) => {

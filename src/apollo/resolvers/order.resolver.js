@@ -12,6 +12,12 @@ module.exports = {
         .populate('user')
         .populate('products');
     },
+    feedOrders: (parent, args) => {
+      console.log(args.filter);
+      const regex = new RegExp(args.filter, 'i')
+      const orders = Order.find({status: {$regex: regex}})
+      return orders.populate('user').populate('products')
+    }
   },
   Mutation: {
     createOrder: (parent, args) => {
