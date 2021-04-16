@@ -6,14 +6,14 @@ const port = config.server.port;
 const apiRouter = require('../routes');
 const schema = require('../apollo/schemas');
 const resolvers = require('../apollo/resolvers');
-import cors from "cors";
+var cors = require('cors');
 
 const { ApolloServer, gql } = require('apollo-server-express');
-var corsOptions = {
-  origin: '*',
-  credentials: true // <-- REQUIRED backend setting
-};
-app.use(cors(corsOptions));
+// var corsOptions = {
+//   origin: 'no-cors',
+//   credentials: true // <-- REQUIRED backend setting
+// };
+app.use(cors());
 
 
 const graphQlServer = new ApolloServer({
