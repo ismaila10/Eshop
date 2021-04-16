@@ -10,7 +10,7 @@ var cors = require('cors');
 
 const { ApolloServer, gql } = require('apollo-server-express');
 var corsOptions = {
-  origin: false
+  origin: true
 };
 app.use(cors(corsOptions));
 
