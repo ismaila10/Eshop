@@ -1,4 +1,5 @@
 const Product = require('../../models/product.model');
+const mongoose = require('mongoose');
 import productValidationSchema from "../../middlewares/validators/product.validation";
 
 module.exports = {
@@ -15,7 +16,13 @@ module.exports = {
     feedProducts: (parent, args) => {
       console.log(args.filter);
       const regex = new RegExp(args.filter, 'i')
-      const products = Product.find({$or: [ {title: {$regex: regex}}, {description: {$regex: regex}}]})
+      const products = Product.find({$or: [{title: {$regex: regex}}, {description: {$regex: regex}}]})
+      return products.populate('categorie')
+    },
+    feedProductsByCategorie: (parent, args) => {
+      console.log(args.filtered);
+      const regex = mongoose.Types.ObjectId(args.filtered); 
+      const products = Product.find({categorie: regex})
       return products.populate('categorie')
     }
   },
@@ -28,13 +35,6 @@ module.exports = {
         status: args.status,
         categorie: args.categorie
       });
-      /*const validation = productValidationSchema.validate(newProduct);
-      console.log(validation)
-      if (validation) {
-        //console.log(validation)
-        return (validation.error);
-      }*/
-      //Categorie.findOneAndUpdate()
       return newProduct.save();
     },
     deleteProduct: (parent, {id}) => {
@@ -54,15 +54,3 @@ module.exports = {
   },
 };
 
-// mutation{_
-// 	createProduct(
-//     title: "cable display", 
-//     description: "qualité USB-C",
-//     status: "disponible",
-//     price: 45,
-//     categorie: "605490854309f17adc40413e"
-//   ){
-//     id
-//     title
-//   }
-// }

@@ -31,6 +31,7 @@ module.exports = {
         return Categorie.findByIdAndDelete(id)
     },
     updateCategorie:(parent, args) => {
+      console.log(args)
       return Categorie.findByIdAndUpdate(args.id, 
         {title :args.title, products: args.products}
       );

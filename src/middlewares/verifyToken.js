@@ -11,7 +11,6 @@ function verifyToken(req, res, next) {
             message: "missing token, please login"
         })
     }
-
     jwt.verify(
         token,
         config.jwt.secret,

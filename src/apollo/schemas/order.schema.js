@@ -12,10 +12,11 @@ module.exports = gql`
         orders:[Order]
         order(id:ID): Order
         feedOrders(filter: String): [Order]
+        feedOrdersByUser(filtered: ID): [Order]
     }
     extend type Mutation {
         createOrder(amountTotal:Float, status: String, products:[ID],user:ID): Order
-        deleteOrder(id: ID!): Boolean!
-        updateOrder(id: ID!, amountTotal:Float, status: String, products:[ID]): Order! 
+        deleteOrder(id: ID!): Order
+        updateOrder(id: ID!, amountTotal:Float, status: String, products:[ID], user: ID): Order! 
     }
 `

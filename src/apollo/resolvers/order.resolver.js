@@ -1,4 +1,5 @@
 const Order = require('../../models/order.model');
+const mongoose = require('mongoose');
 
 module.exports = {
   Query: {
@@ -16,6 +17,12 @@ module.exports = {
       console.log(args.filter);
       const regex = new RegExp(args.filter, 'i')
       const orders = Order.find({status: {$regex: regex}})
+      return orders.populate('user').populate('products')
+    },
+    feedOrdersByUser: (parent, args) => {
+      console.log(args.filtered);
+      const regex = mongoose.Types.ObjectId(args.filtered); 
+      const orders = Order.find({user: regex})
       return orders.populate('user').populate('products')
     }
   },
@@ -36,6 +43,7 @@ module.exports = {
       return Order.findByIdAndUpdate(args.id, 
         {
           amountTotal :args.amountTotal, 
+          user: args.user,
           status :args.status, 
           products: args.products
         }
