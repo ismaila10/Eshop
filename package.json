@@ -3,6 +3,10 @@
     "version": "1.0.0",
     "description": "",
     "main": "app.js",
+    "engines": {
+        "node": "14.x",
+        "npm": "7.x"
+    },
     "scripts": {
         "dev": "nodemon --exec babel-node ./src/app.js",
         "build": "babel -d ./build ./src",
