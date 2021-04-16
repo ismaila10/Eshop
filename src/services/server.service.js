@@ -9,10 +9,8 @@ const resolvers = require('../apollo/resolvers');
 var cors = require('cors');
 
 const { ApolloServer, gql } = require('apollo-server-express');
-var corsOptions = {
-  origin: true
-};
-app.use(cors(corsOptions));
+
+app.use(cors());
 
 
 const graphQlServer = new ApolloServer({
@@ -20,7 +18,7 @@ const graphQlServer = new ApolloServer({
   resolvers
 })
 
-graphQlServer.applyMiddleware({ app, path: "/graphql" });
+graphQlServer.applyMiddleware({ app, cors: false, path: "/graphql" });
 
 app.use(bodyParser.json());
 
