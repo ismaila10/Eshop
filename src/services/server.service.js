@@ -10,7 +10,7 @@ import cors from "cors";
 
 const { ApolloServer, gql } = require('apollo-server-express');
 var corsOptions = {
-  origin: 'https://clienteshop.herokuapp.com',
+  origin: '*',
   credentials: true // <-- REQUIRED backend setting
 };
 app.use(cors(corsOptions));
