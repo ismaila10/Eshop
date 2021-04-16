@@ -9,11 +9,10 @@ const resolvers = require('../apollo/resolvers');
 var cors = require('cors');
 
 const { ApolloServer, gql } = require('apollo-server-express');
-// var corsOptions = {
-//   origin: 'no-cors',
-//   credentials: true // <-- REQUIRED backend setting
-// };
-app.use(cors());
+var corsOptions = {
+  origin: false
+};
+app.use(cors(corsOptions));
 
 
 const graphQlServer = new ApolloServer({
