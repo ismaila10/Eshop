@@ -6,7 +6,7 @@ const port = config.server.port;
 const apiRouter = require('../routes');
 const schema = require('../apollo/schemas');
 const resolvers = require('../apollo/resolvers');
-var cors = require('cors');
+const cors = require('cors');
 
 const { ApolloServer, gql } = require('apollo-server-express');
 
@@ -18,7 +18,7 @@ const graphQlServer = new ApolloServer({
   resolvers
 })
 
-graphQlServer.applyMiddleware({ app, cors: false, path: "/graphql" });
+graphQlServer.applyMiddleware({ app, path: "/graphql" });
 
 app.use(bodyParser.json());
 
