@@ -9,8 +9,12 @@ const resolvers = require('../apollo/resolvers');
 import cors from "cors";
 
 const { ApolloServer, gql } = require('apollo-server-express');
+var corsOptions = {
+  origin: 'https://clienteshop.herokuapp.com',
+  credentials: true // <-- REQUIRED backend setting
+};
+app.use(cors(corsOptions));
 
-app.use(cors());
 
 const graphQlServer = new ApolloServer({
   typeDefs : schema,
