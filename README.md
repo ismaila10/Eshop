@@ -10,4 +10,8 @@ Npm version 7.5.4
 # Lien vers l'API 
 https://api-eshop.herokuapp.com/
 
+# Lien vers le client Nuxt JS
+https://clienteshop.herokuapp.com/ 
+compte admin (login:ismaila.diallo@ynov.com - password: 12345678)
+
 
